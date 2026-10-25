@@ -1,0 +1,105 @@
+---
+import indexHtml from '../../data/demo-html/index.html?raw';
+import aboutHtml from '../../data/demo-html/about.html?raw';
+import teamHtml from '../../data/demo-html/team.html?raw';
+import contactHtml from '../../data/demo-html/contact.html?raw';
+import pageHtml from '../../data/demo-html/page.html?raw';
+import sitemapHtml from '../../data/demo-html/sitemap.html?raw';
+import notFoundHtml from '../../data/demo-html/404.html?raw';
+import { renderHomepageCollections } from '../../lib/state-news-demo-render';
+import { tinaField } from '@tinacms/astro/tina-field';
+import { load } from 'cheerio';
+
+const { template = 'page', data = null, config = null, posts = [], categories = [] } = Astro.props;
+const templates:Record<string,string> = { index:indexHtml, about:aboutHtml, team:teamHtml, contact:contactHtml, page:pageHtml, sitemap:sitemapHtml, '404':notFoundHtml };
+const selectedTemplate = data?.authorityTemplate || template;
+let html = templates[selectedTemplate] || pageHtml;
+const blocks = Array.isArray(data?.blocks) ? data.blocks : [];
+const home = blocks.find((b:any) => b?._template === 'homepageTemplate' || b?.__typename === 'PageBlocksHomepageTemplate') || {};
+const escapeHtml = (value:any) => String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const replace = (before:string, after:any) => { if (after !== null && after !== undefined && String(after).trim()) html = html.split(before).join(escapeHtml(after)); };
+
+replace('State News Digest', config?.seo?.title || 'State News Digest');
+if (selectedTemplate === 'index') {
+  replace('A clearer view of the news.', home?.hero?.title);
+  replace('Keeping up with the news should leave you with a clearer understanding of the world — not a longer list of things to worry about.', home?.hero?.description);
+  replace('Explore our coverage', home?.hero?.buttonText);
+}
+if (selectedTemplate === 'about') replace('About State News Digest', data?.title);
+if (selectedTemplate === 'team') replace('Our team', data?.title);
+if (selectedTemplate === 'contact') {
+  replace('Contact us', data?.title);
+  const endpoint = config?.contactForm?.formspreeEndpoint || import.meta.env.FORMSPREE_ENDPOINT || 'https://formspree.io/f/xkjjovkw';
+  html = html.replace('<form ', `<form id="snd-contact-form" action="${escapeHtml(endpoint)}" method="POST" `);
+  html = html.replace('data-dc-tpl="63"', 'data-dc-tpl="63" for="snd-contact-name"')
+    .replace('name="name"', 'id="snd-contact-name" name="name" required')
+    .replace('data-dc-tpl="66"', 'data-dc-tpl="66" for="snd-contact-phone"')
+    .replace('name="phone"', 'id="snd-contact-phone" name="phone"')
+    .replace('data-dc-tpl="69"', 'data-dc-tpl="69" for="snd-contact-email"')
+    .replace('name="email"', 'id="snd-contact-email" name="email" required')
+    .replace('data-dc-tpl="72"', 'data-dc-tpl="72" for="snd-contact-message"')
+    .replace('name="message"', 'id="snd-contact-message" name="message" required');
+  html = html.replace('</form>', `<input type="hidden" name="_subject" value="${escapeHtml(config?.contactForm?.subject || 'State News Digest website inquiry')}"><p id="snd-contact-error" role="alert" hidden style="color:#B42318;margin:0">We could not send your message. Please try again.</p></form><div id="snd-contact-success" role="status" hidden style="background:#F1F6F2;border-radius:28px;padding:clamp(24px,3.4vw,44px)"><h2 style="margin:0 0 12px;font-family:'Young Serif',serif;color:#17392C">Thank you, <span data-contact-name></span>.</h2><p style="margin:0 0 24px;color:#2C4238">Your message has been sent to the State News Digest newsroom.</p><button type="button" data-contact-reset style="border:0;border-radius:999px;padding:17px 30px;background:#1E6B4F;color:#fff;font:700 17px 'Plus Jakarta Sans',sans-serif;cursor:pointer">Send another message</button></div>`);
+}
+if (selectedTemplate === 'page') replace('Editorial Guidelines', data?.title);
+if (selectedTemplate === '404') {
+  replace('This page could not be found.', config?.notFound?.title);
+  replace('The link may be outdated, or the page may have moved. Try one of the sections below to keep reading.', config?.notFound?.description);
+  replace('Back to Homepage', config?.notFound?.buttonText);
+  if (config?.notFound?.buttonLink) html = html.replace('href="#"', `href="${escapeHtml(config.notFound.buttonLink)}"`);
+}
+for (const item of data?.authorityText || []) replace(escapeHtml(item?.source), item?.value);
+for (const item of data?.authorityImages || []) {
+  if (!item?.source || !item?.url) continue;
+  html = html.split(escapeHtml(item.source)).join(escapeHtml(item.url));
+}
+for (const item of data?.authorityLinks || []) {
+  if (!item?.source || !item?.href) continue;
+  html = html.split(`href="${escapeHtml(item.source)}"`).join(`href="${escapeHtml(item.href)}"`);
+}
+if (selectedTemplate === 'index') html = renderHomepageCollections(html, { posts, categories, config });
+const $ = load(html, null, false);
+for (const item of data?.authorityText || []) {
+  const value = String(item?.value || item?.source || '').trim();
+  if (!value) continue;
+  $('*').filter((_, element) => $(element).children().length === 0 && $(element).text().trim() === value).first().attr('data-tina-field', tinaField(item, 'value'));
+}
+for (const item of data?.authorityImages || []) {
+  if (item?.url) $(`img[src="${item.url}"]`).first().attr('data-tina-field', tinaField(item, 'url'));
+}
+for (const item of data?.authorityLinks || []) {
+  if (item?.href) $(`a[href="${item.href}"]`).first().attr('data-tina-field', tinaField(item, 'href'));
+}
+if (selectedTemplate === 'index' && home?.hero) {
+  if (home.hero.title) $('h1').first().attr('data-tina-field', tinaField(home.hero, 'title'));
+  if (home.hero.description) $('h1').first().nextAll('p').first().attr('data-tina-field', tinaField(home.hero, 'description'));
+}
+html = $.html();
+---
+<Fragment set:html={html} />
+<script is:inline>
+(() => {
+  const bind = () => {
+    const form = document.querySelector('#snd-contact-form');
+    if (!form || form.dataset.bound) return;
+    form.dataset.bound = '1';
+    const success = document.querySelector('#snd-contact-success');
+    const error = document.querySelector('#snd-contact-error');
+    const submit = form.querySelector('[type="submit"]');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      error.hidden = true; submit.disabled = true;
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        if (!response.ok) throw new Error('submit failed');
+        success.querySelector('[data-contact-name]').textContent = form.elements.name.value.trim();
+        form.reset(); form.hidden = true; success.hidden = false;
+      } catch (_) { error.hidden = false; }
+      finally { submit.disabled = false; }
+    });
+    success?.querySelector('[data-contact-reset]')?.addEventListener('click', () => { success.hidden = true; form.hidden = false; form.querySelector('[name="name"]')?.focus(); });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind); else bind();
+})();
+</script>

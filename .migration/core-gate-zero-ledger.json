@@ -1,0 +1,249 @@
+{
+  "schema": "astro-tina-core-gate-zero-v1",
+  "generatedAt": "2026-10-25T15:35:42.004589+00:00",
+  "destination": "https://www.statenewsdigest.com/",
+  "general_status": "READY_FOR_EXACT_ACCESS_CHECKS",
+  "tracker_checked": true,
+  "saved_evidence_checked": true,
+  "organization_switcher_checked": true,
+  "organizationSwitcherEvidence": "standing user-tested Tina resource plus canonical preserved organization identity; live recheck remains a later access/consumption proof, not existence proof",
+  "positive_identity_preserved": true,
+  "auth_separated_from_existence": true,
+  "rules_conflict_check": true,
+  "user_declared_prerequisites_complete": true,
+  "user_provided_everything_user_tested": true,
+  "user_supplied_resources_preserved": true,
+  "resource_existence_separated_from_access": true,
+  "approved_sources_exhausted_before_auth_blocked": true,
+  "no_replacement_resources_created": true,
+  "agent_assumption_cannot_override_user_verified_resources": true,
+  "resources": [
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "bliss-tinacms/statenewsdigest",
+      "type": "repository",
+      "consumption": "PASS",
+      "evidence": [
+        "tracker-sheet",
+        "GitHub API",
+        "exact origin clone"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "/home/aaisha/workspaces/statenewsdigest",
+      "type": "project_folder",
+      "consumption": "PASS",
+      "evidence": [
+        "exact repository clone; no substitute provisioned"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "State News Digest Tina project",
+      "type": "tina_project",
+      "consumption": "PENDING",
+      "evidence": [
+        "USER-PROVIDED-EVERYTHING-001",
+        "tracker Tina sign-in row",
+        "organization evidence preserved"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "State News Digest Tina client",
+      "type": "tina_client",
+      "consumption": "PENDING",
+      "evidence": [
+        "USER-PROVIDED-EVERYTHING-001",
+        "protected destination metadata lookup pending"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "bliss-tinacms's Organization",
+      "type": "organization",
+      "consumption": "PASS",
+      "evidence": [
+        "canonical global identity rule",
+        "user-verified supplied/tested Tina resource"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "main",
+      "type": "branch",
+      "consumption": "PASS",
+      "evidence": [
+        "GitHub destination default branch"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "destination Tina/GitHub tokens",
+      "type": "token",
+      "consumption": "PENDING",
+      "evidence": [
+        "tracker and protected secret sources; values never retained in ledger"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "Tina Content API and destination service APIs",
+      "type": "api",
+      "consumption": "PENDING",
+      "evidence": [
+        "user-verified supplied/tested resources"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "destination API credentials",
+      "type": "api_credential",
+      "consumption": "PENDING",
+      "evidence": [
+        "tracker/protected sources; values redacted"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "GitHub/Tina/cPanel/Cloudinary/Formspree/Cloudflare logins",
+      "type": "login",
+      "consumption": "PASS",
+      "evidence": [
+        "migration tracker checked; credentials protected/redacted"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "statenewsdigest.com cPanel domain",
+      "type": "hosting_resource",
+      "consumption": "PASS",
+      "evidence": [
+        "cPanel DomainInfo addon_domains live read"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "Cloudinary, Formspree, Cloudflare",
+      "type": "service_resource",
+      "consumption": "PENDING",
+      "evidence": [
+        "migration tracker checked; exact destination isolation to verify"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "bliss-tinacms and BlissDrive service identities",
+      "type": "service_account",
+      "consumption": "PASS",
+      "evidence": [
+        "tracker identities and destination repository owner"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "Publisher/Admin account",
+      "type": "account",
+      "consumption": "PENDING",
+      "evidence": [
+        "protected tina-publisher source and standing user verification"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "cPanel target path for statenewsdigest.com",
+      "type": "path",
+      "consumption": "PENDING",
+      "evidence": [
+        "domain exists; exact document root/runtime path to discover read-only"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "10 supplied authoritative HTML templates",
+      "type": "demo",
+      "consumption": "PASS",
+      "evidence": [
+        "uploaded files inventoried and SHA-256 hashed"
+      ]
+    },
+    {
+      "existence": "PASS_USER_VERIFIED",
+      "approved_sources_checked": true,
+      "replacement_created": false,
+      "recreation_requested": false,
+      "access": "PASS",
+      "name": "migration sheet and global migration controls",
+      "type": "other_user_supplied_input",
+      "consumption": "PASS",
+      "evidence": [
+        "sheet exported/read with secret redaction; all named controls loaded"
+      ]
+    }
+  ]
+}

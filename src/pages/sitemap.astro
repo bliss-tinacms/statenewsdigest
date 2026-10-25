@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import SitemapPage from '../components/state-news/SitemapPage.astro';
+import { getConfig, getLocalPage, getPublicPage } from '../lib/data';
+
+export const prerender = false;
+
+const slug = 'sitemap';
+const data = (await getPublicPage(slug)).data?.page ?? getLocalPage(slug);
+if (!data) return new Response('Not Found', { status: 404 });
+const config = (await getConfig()).data?.config ?? null;
+const seo = data.seo ?? {};
+const title = seo.metaTitle || `Sitemap | ${config?.seo?.title || 'State News Digest'}`;
+const description = seo.metaDescription || config?.seo?.description || '';
+
+---
+<Base title={title} description={description} canonicalUrl="/sitemap/">
+  <SitemapPage data={data} />
+</Base>

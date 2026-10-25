@@ -1,0 +1,56 @@
+{
+  "headerNavigation": "src/content/navigation/header.json",
+  "footerNavigation": "src/content/navigation/footer.json",
+  "seo": {
+    "title": "State News Digest",
+    "description": "News with context about the communities and places behind the story.",
+    "siteOwner": "State News Digest",
+    "logo": "https://res.cloudinary.com/jip42unh/image/upload/v1792953826/statenewsdigest/demo-v2/ce9bb2415a7832722aacb83609175e88858ce82fe173610b17510ac47e0b6a36.png",
+    "favicon": "https://res.cloudinary.com/jip42unh/image/upload/v1792953826/statenewsdigest/demo-v2/ce9bb2415a7832722aacb83609175e88858ce82fe173610b17510ac47e0b6a36.png",
+    "footerLogo": "https://res.cloudinary.com/jip42unh/image/upload/v1792953826/statenewsdigest/demo-v2/ce9bb2415a7832722aacb83609175e88858ce82fe173610b17510ac47e0b6a36.png"
+  },
+  "contactForm": {
+    "formspreeEndpoint": "https://formspree.io/f/xkjjovkw",
+    "heading": "Send a message",
+    "description": "State News Digest handles most correspondence through its newsroom and general-inquiry channels.",
+    "buttonText": "Send Message",
+    "note": "All fields except phone are required.",
+    "subject": "State News Digest website inquiry"
+  },
+  "contributorCta": {
+    "eyebrow": "Write for us",
+    "title": "Have a story worth telling?",
+    "description": "State News Digest welcomes contributions from writers, experts, and practitioners with original reporting or informed perspective.",
+    "buttonText": "Write for Us",
+    "buttonLink": "/write-for-us/"
+  },
+  "footer": {
+    "copyrightText": "\u00a9 2026 State News Digest. All rights reserved."
+  },
+  "notFound": {
+    "title": "This page could not be found.",
+    "description": "The link may be outdated, or the page may have moved. Try one of the sections below to keep reading.",
+    "buttonText": "Back to Homepage",
+    "buttonLink": "/",
+    "quickLinks": [
+      {
+        "label": "Blog",
+        "href": "/blog/"
+      },
+      {
+        "label": "About Us",
+        "href": "/about/"
+      },
+      {
+        "label": "Contact Us",
+        "href": "/contact/"
+      }
+    ]
+  },
+  "codeInjection": {
+    "headerCode": "",
+    "footerCode": ""
+  },
+  "contactLinks": [],
+  "footerStarfield": false
+}

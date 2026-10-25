@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import GlobalNotFound from '../components/state-news/GlobalNotFound.astro';
+import { getConfig } from '../lib/data';
+import { islands } from '../lib/islands';
+const config=(await getConfig()).data?.config ?? null;
+const title=`404 | ${config?.seo?.title||'State News Digest'}`;
+const description=config?.notFound?.description||'The requested page could not be found.';
+---
+<Base title={title} description={description} noindex={true}>
+  <TinaIsland name="global-not-found" wrapper={islands['global-not-found'].wrapper} primary>
+    <GlobalNotFound config={config} />
+  </TinaIsland>
+</Base>

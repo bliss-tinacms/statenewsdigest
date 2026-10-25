@@ -1,0 +1,37 @@
+{
+  "title": "Header Navigation",
+  "items": [
+    {
+      "label": "US News",
+      "href": "/us-news/"
+    },
+    {
+      "label": "World News",
+      "href": "/world-news/"
+    },
+    {
+      "label": "Business",
+      "href": "/business/"
+    },
+    {
+      "label": "Entertainment",
+      "href": "/entertainment/"
+    },
+    {
+      "label": "Sports",
+      "href": "/sports/"
+    },
+    {
+      "label": "Health",
+      "href": "/health/"
+    },
+    {
+      "label": "Technology",
+      "href": "/technology/"
+    },
+    {
+      "label": "Featured",
+      "href": "/featured/"
+    }
+  ]
+}

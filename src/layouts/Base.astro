@@ -1,0 +1,75 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import HeaderBrand from '../components/state-news/HeaderBrand.astro';
+import HeaderNavigation from '../components/state-news/HeaderNavigation.astro';
+import FooterBrand from '../components/state-news/FooterBrand.astro';
+import GlobalFooterMeta from '../components/state-news/GlobalFooterMeta.astro';
+import FooterNavigation from '../components/state-news/FooterNavigation.astro';
+import { islands } from '../lib/islands';
+import { getConfig, getHeaderNavigation, getFooterNavigation, getNavigation } from '../lib/data';
+import '../styles/state-news-exact.css';
+
+interface Props { title:string; description:string; image?:string; ogTitle?:string; ogDescription?:string; canonicalUrl?:string; noindex?:boolean; nofollow?:boolean; contentType?:'website'|'article'; pubDate?:Date|string; updatedDate?:Date|string; authorName?:string; }
+const { title, description, image, ogTitle, ogDescription, canonicalUrl, noindex, nofollow, contentType, pubDate, updatedDate, authorName } = Astro.props;
+const config = (await getConfig()).data?.config ?? null;
+const headerNavigation = (await getHeaderNavigation(config)).data?.navigation ?? null;
+const footerNavigation = (await getFooterNavigation(config)).data?.navigation ?? null;
+const legalNavigation = (await getNavigation('footer-legal')).data?.navigation ?? null;
+const navigationSlug = (reference: unknown, fallback: string) => {
+  if (typeof reference === 'string') return reference.replaceAll('\\', '/').replace(/^src\/content\/navigation\//, '').replace(/\.json$/, '') || fallback;
+  const sys = reference && typeof reference === 'object' ? (reference as any)._sys : null;
+  return String(sys?.relativePath || sys?.filename || fallback).replace(/\.json$/, '');
+};
+const headerNavigationSlug = navigationSlug(config?.headerNavigation, 'header');
+const footerNavigationSlug = navigationSlug(config?.footerNavigation, 'footer');
+const headerCode = config?.codeInjection?.headerCode?.trim() || '';
+const footerCode = config?.codeInjection?.footerCode?.trim() || '';
+const favicon = config?.seo?.favicon || config?.favicon || '/favicon.svg';
+const defaultSocialImage = config?.seo?.defaultSocialImage || undefined;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <BaseHead title={title} description={description} image={image || defaultSocialImage} ogTitle={ogTitle} ogDescription={ogDescription} canonicalUrl={canonicalUrl} noindex={noindex} nofollow={nofollow} favicon={favicon} contentType={contentType} pubDate={pubDate} updatedDate={updatedDate} authorName={authorName} />
+  {headerCode && <Fragment set:html={headerCode} />}
+</head>
+<body>
+<Fragment set:html={'<!--email_off-->'} />
+<div id="dc-root"><div class="sc-host"><div>
+  <header class="snd-header">
+    <div class="snd-header__inner">
+      <TinaIsland name="global" wrapper={islands.global.wrapper}>
+        <HeaderBrand config={config} />
+      </TinaIsland>
+      <TinaIsland name="navigation" wrapper={islands.navigation.wrapper} params={{ slug: headerNavigationSlug }}>
+        <HeaderNavigation navigation={headerNavigation} />
+      </TinaIsland>
+    </div>
+  </header>
+  <slot />
+  <footer class="snd-footer">
+    <div class="snd-footer__inner">
+      <div class="snd-footer__top">
+        <TinaIsland name="global-footer" wrapper={islands['global-footer'].wrapper}>
+          <FooterBrand config={config} />
+        </TinaIsland>
+        <TinaIsland name="footer-navigation" wrapper={islands['footer-navigation'].wrapper} params={{ slug: footerNavigationSlug }}>
+          <FooterNavigation navigation={footerNavigation} />
+        </TinaIsland>
+      </div>
+      <div class="snd-footer__bottom">
+        <TinaIsland name="global-footer-meta" wrapper={islands['global-footer-meta'].wrapper}>
+          <GlobalFooterMeta config={config} />
+        </TinaIsland>
+        <TinaIsland name="footer-legal-navigation" wrapper={islands['footer-legal-navigation'].wrapper} params={{ slug: 'footer-legal' }}>
+          <FooterNavigation legal navigation={legalNavigation} />
+        </TinaIsland>
+      </div>
+    </div>
+  </footer>
+</div></div></div>
+{footerCode && <Fragment set:html={footerCode} />}
+<Fragment set:html={'<!--/email_off-->'} />
+</body>
+</html>

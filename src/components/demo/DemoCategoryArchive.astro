@@ -1,0 +1,22 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import categoryHtml from '../../data/demo-html/category.html?raw';
+import { getConfig } from '../../lib/data';
+import { renderCategoryDemo } from '../../lib/state-news-demo-render';
+
+const { category, posts = [], title, archiveTitle, currentPage, totalPages, basePath } = Astro.props;
+const config = (await getConfig()).data?.config ?? null;
+const resolvedTitle = category?.title || archiveTitle || title || 'Category';
+const normalizedCategory = category || { title: resolvedTitle, _sys: { filename: String(resolvedTitle).toLowerCase().replace(/[^a-z0-9]+/g, '-') } };
+const queryPage = Number(Astro.url.searchParams.get('page') || '1');
+const html = renderCategoryDemo(categoryHtml, {
+  category: normalizedCategory,
+  posts,
+  page: currentPage || (Number.isFinite(queryPage) ? queryPage : 1),
+  totalPages,
+  basePath: basePath ? `${String(basePath).replace(/\/$/, '')}/` : undefined,
+  config,
+  fields: category ? { title: tinaField(category, 'title') } : {},
+});
+---
+<div class="state-news-authority-fragment" set:html={html} />

@@ -1,0 +1,73 @@
+{
+  "schema": "astro-tina-global-resource-policy-v3",
+  "control_id": "USER-PROVIDED-EVERYTHING-001",
+  "scope": "all-astro-tina-migrations",
+  "site_specific": false,
+  "automatic": true,
+  "user_reminder_required": false,
+  "standing_user_declaration_is_positive_evidence": true,
+  "agent_assumption_cannot_override_user_verified_resources": true,
+  "required_global_documents": [
+    "references/ASTRO-TINA-MIGRATION-CORE.md",
+    "references/TINA-MIGRATION-GOLD.md",
+    "references/USER-PROVIDED-EVERYTHING-001.md"
+  ],
+  "user_verified_resource_existence": "PASS_USER_VERIFIED",
+  "user_declared_prerequisites_complete": true,
+  "user_provided_everything_user_tested": true,
+  "resource_types": [
+    "repository",
+    "project_folder",
+    "tina_project",
+    "tina_client",
+    "organization",
+    "branch",
+    "token",
+    "api",
+    "api_credential",
+    "login",
+    "hosting_resource",
+    "service_resource",
+    "service_account",
+    "account",
+    "path",
+    "demo",
+    "other_user_supplied_input"
+  ],
+  "separate_states": [
+    "RESOURCE_EXISTENCE",
+    "RESOURCE_CONSUMPTION",
+    "ACCESS_CHECK"
+  ],
+  "prohibited_general_status": "BLOCKED_ON_RESOURCES",
+  "auth_blocked_scope": "exact-exhausted-operation-only",
+  "prohibited_absence_inferences": [
+    "missing_shell_variable",
+    "failed_lookup",
+    "empty_default_organization",
+    "missing_transcript_excerpt",
+    "context_compaction",
+    "http_401",
+    "http_403",
+    "agent_reasoning"
+  ],
+  "required_true_fields": [
+    "tracker_checked",
+    "saved_evidence_checked",
+    "organization_switcher_checked",
+    "positive_identity_preserved",
+    "auth_separated_from_existence",
+    "rules_conflict_check",
+    "user_declared_prerequisites_complete",
+    "user_provided_everything_user_tested",
+    "user_supplied_resources_preserved",
+    "resource_existence_separated_from_access",
+    "approved_sources_exhausted_before_auth_blocked",
+    "no_replacement_resources_created",
+    "agent_assumption_cannot_override_user_verified_resources"
+  ],
+  "replacement_resources_forbidden": true,
+  "resource_recreation_requests_forbidden": true,
+  "prose_only_acknowledgement_passes": false,
+  "pre_gate_allowed_activity": "read-only-inspection-and-gate-correction-only"
+}

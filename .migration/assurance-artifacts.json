@@ -1,0 +1,29 @@
+{
+  "schema": "migration-assurance-map-v1",
+  "generatedAt": "2026-10-25T15:35:42.004589+00:00",
+  "skill": "astro-tina-cms",
+  "skillVersion": "2.0.38",
+  "skillPath": "/home/aaisha/.hermes/skills/software-development/astro-tina-cms",
+  "automaticCore": true,
+  "policyVersion": 11,
+  "artifacts": {
+    "SKILL.md": "074f9fef1643abd011b1b9ab96224878b30895a7305a1d81fb9c2a677e6dfc69",
+    "references/ASTRO-TINA-MIGRATION-CORE.md": "769e1a0bb8c85be2d67d9aa4ddffea45a23633f6fffc8ecd3237fa170e6a248b",
+    "references/ASTRO-TINA-MIGRATION-STATE-MACHINE.md": "24713100ecdabeae755d1eb9db620bcab1977e93b033b072f6a3d89e7ee4859f",
+    "references/ASTRO-TINA-MIGRATION-COMPLETION-POLICY.json": "035d0ba2e3d3b70b9d11fa6f65051db75090fb99ac1460cd97268c956dd03bb0",
+    "references/TINA-FULLCHECK.md": "6a332f7ef5828d8f275f8537712ac4180dbe484c0bd1f8b7fcf1e9152141388c",
+    "references/seo-reflection-and-publisher-acceptance.md": "6714c3440fb9d7499148afb4f9a298c72172458452cb3e4ed5eef57347cddf23",
+    "references/PUBLISHER-ADMIN-GATE.md": "b7f2076fa3ac02fabb775772d26d55797c37629f1401eb147ea198cefceda047",
+    "templates/migration-evidence-manifest.json": "ceb3ed80a1649bb156d9beffecd51ab24c5fb0c57cb88050a7707f35281a0a97",
+    "scripts/validate-migration-completion.mjs": "98c48ba7cc1f4f797e7352edac3f67c0fd485ad8a1f743ed0e155705fd5b8231",
+    "scripts/test-migration-completion-negative.mjs": "3a1c255e701bb8a486f9e06742ecd8071fa79c02f6bbeaa2be22c736b94906af",
+    "references/MIGRATION-REBRAND-UI-CONTRACT-001.md": "17faa244ed71f5e686986ce9ba24fdbaa565ffc3c6000ad5e77531e342374190",
+    "references/MIGRATION-ASSURANCE-EXECUTABLE-001.md": "e86476fefc6efa171ddab4dcc5fe4194450557f289a895a659c920a945a732db",
+    "references/CATEGORY-ROUTE-MULTICAT-EXECUTABLE-001.md": "52da2695ca91a878ba2b86f248359a952920c36d38ccbe415fac998e0991db7f",
+    "references/DEMO-MULTICAT-OVERRIDE-001.md": "c298fbe2fca563f3828e8a74fa0c34c3aa192e6fede8cbfc36a927a01fc84ba3",
+    "references/GITHUB-AUTHORIZATION-CONTRACT-001.md": "e93d53224419f6837342d7c814f77e329ae105830d7d98968067c3a8880bfc83"
+  },
+  "status": "PASS",
+  "positiveValidator": "PASS",
+  "controlledNegativeSuite": "PASS_15_OF_15"
+}

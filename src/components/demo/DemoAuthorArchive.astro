@@ -1,0 +1,26 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import authorHtml from '../../data/demo-html/author.html?raw';
+import { getConfig } from '../../lib/data';
+import { renderAuthorDemo } from '../../lib/state-news-demo-render';
+
+const { author, posts = [], title, archiveTitle, currentPage, totalPages, basePath } = Astro.props;
+const config = (await getConfig()).data?.config ?? null;
+const resolvedTitle = author?.name || archiveTitle || title || 'Author';
+const normalizedAuthor = author || { name: resolvedTitle, _sys: { filename: String(resolvedTitle).toLowerCase().replace(/[^a-z0-9]+/g, '-') } };
+const queryPage = Number(Astro.url.searchParams.get('page') || '1');
+const html = renderAuthorDemo(authorHtml, {
+  author: normalizedAuthor,
+  posts,
+  page: currentPage || (Number.isFinite(queryPage) ? queryPage : 1),
+  totalPages,
+  basePath: basePath ? `${String(basePath).replace(/\/$/, '')}/` : undefined,
+  config,
+  fields: author ? {
+    name: tinaField(author, 'name'),
+    avatar: tinaField(author, 'avatar'),
+    bio: tinaField(author, 'bio'),
+  } : {},
+});
+---
+<div class="state-news-authority-fragment" set:html={html} />

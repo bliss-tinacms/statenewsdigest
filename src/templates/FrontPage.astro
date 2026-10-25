@@ -1,0 +1,5 @@
+---
+import DemoStaticFragment from '../components/state-news/DemoStaticFragment.astro';
+const { data, editData, config, posts = [], categories = [] } = Astro.props;
+---
+<DemoStaticFragment template="index" data={editData || data} config={config} posts={posts} categories={categories} />

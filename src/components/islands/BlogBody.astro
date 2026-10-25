@@ -1,0 +1,59 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+import articleHtml from '../../data/demo-html/article.html?raw';
+import { getConfig, getUser, listBlogs, type CmsBlog } from '../../lib/data';
+import { renderArticleDemo } from '../../lib/state-news-demo-render';
+
+interface Props {
+  data?: CmsBlog | null;
+  relatedPosts?: CmsBlog[];
+}
+
+const { data, relatedPosts = [] } = Astro.props;
+const config = (await getConfig()).data?.config ?? null;
+const categoryValues = (value: any) => Array.isArray(value)
+  ? value
+  : value && typeof value === 'object'
+    ? Object.entries(value).sort(([left], [right]) => left.localeCompare(right)).map(([, item]) => item)
+    : [];
+const relationshipSlots = (post: any) => Object.entries(post || {}).filter(([key, value]) => /^category\d{2}$/.test(key) && value).sort(([left], [right]) => left.localeCompare(right)).map(([, item]) => item);
+const categoryItems = categoryValues((data as any)?.categories);
+const categories = (categoryItems.length ? categoryItems : relationshipSlots(data)).map((item: any) => item?.category || item).filter(Boolean).concat((data as any)?.category ? [(data as any).category] : []);
+const authorReference = (data as any)?.author;
+const authorSlug = typeof authorReference === 'string'
+  ? authorReference.split('/').pop()?.replace(/\.(json|mdx?)$/i, '')
+  : authorReference?._sys?.filename;
+const author = typeof authorReference === 'object' && authorReference?.name
+  ? authorReference
+  : authorSlug ? (await getUser(authorSlug)).data?.user ?? null : null;
+const categoryKey = (value: any) => String(typeof value === 'string' ? value : value?.category || value?._sys?.filename || value?.title || '')
+  .split('/').pop()?.replace(/\.(json|mdx?)$/i, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const currentCategoryKeys = categories.map(categoryKey).filter(Boolean);
+const resolvedRelatedPosts = Array.isArray(relatedPosts) && relatedPosts.length
+  ? relatedPosts
+  : (await listBlogs())
+      .filter((post: any) => post?._sys?.filename !== data?._sys?.filename)
+      .filter((post: any) => {
+        const stored = categoryValues(post?.categories);
+        const refs = (stored.length ? stored : relationshipSlots(post)).concat(post?.category ? [post.category] : []).map((ref: any) => ref?.category || ref);
+        return refs.some((ref: any) => currentCategoryKeys.includes(categoryKey(ref)));
+      })
+      .slice(0, 3);
+const html = data ? renderArticleDemo(articleHtml, {
+  post: data,
+  author,
+  categories,
+  relatedPosts: resolvedRelatedPosts,
+  config,
+  fields: {
+    title: tinaField(data as any, 'title'),
+    categories: tinaField(data as any, 'categories'),
+    author: tinaField(data as any, 'author'),
+    pubDate: tinaField(data as any, 'pubDate'),
+    readTime: tinaField(data as any, 'readTime'),
+    heroImage: tinaField(data as any, 'heroImage'),
+    body: tinaField(data as any, 'body'),
+  },
+}) : '';
+---
+{data && <div class="state-news-authority-fragment" set:html={html} />}

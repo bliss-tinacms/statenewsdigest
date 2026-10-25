@@ -1,0 +1,67 @@
+{
+  "schema": "astro-demo-authority-v1",
+  "generatedAt": "2026-10-25T15:35:42.004589+00:00",
+  "immutable": true,
+  "files": [
+    {
+      "name": "contact.html",
+      "sourcePath": ".migration/demo-authority/source/contact.html",
+      "bytes": 325247,
+      "sha256": "41471de48790288948c38ac75a8b1e265be973720656a93a631d3d15302f7005"
+    },
+    {
+      "name": "category.html",
+      "sourcePath": ".migration/demo-authority/source/category.html",
+      "bytes": 3465609,
+      "sha256": "7b300c3a243127728b37729a31946ca082c66d197a21eee5e5017071e8e70e8b"
+    },
+    {
+      "name": "author.html",
+      "sourcePath": ".migration/demo-authority/source/author.html",
+      "bytes": 3545594,
+      "sha256": "f525d8536b8f4cab6e405e2f1df3fcd84d4c7ebddf1d874be37ea432d542f47e"
+    },
+    {
+      "name": "article.html",
+      "sourcePath": ".migration/demo-authority/source/article.html",
+      "bytes": 2403812,
+      "sha256": "bcb4ff07952c4ba8d0bcfd85bfe5b9c24d6c523ad85e26f0aff9bfe914fd269c"
+    },
+    {
+      "name": "about.html",
+      "sourcePath": ".migration/demo-authority/source/about.html",
+      "bytes": 748412,
+      "sha256": "8b4b8e74788d534691bce5998e480b799655cbbe7f0c017cab5e57f557b0c55e"
+    },
+    {
+      "name": "404.html",
+      "sourcePath": ".migration/demo-authority/source/404.html",
+      "bytes": 314067,
+      "sha256": "b5928afe60fafc8b782dfc327acd9f0ed8d59d479541c4804a6bc825a1223c66"
+    },
+    {
+      "name": "team.html",
+      "sourcePath": ".migration/demo-authority/source/team.html",
+      "bytes": 1134841,
+      "sha256": "d64f79ea41a4c9ea84337b50445158fbd2a547354633e3c4c0295fcbbaa4c1ee"
+    },
+    {
+      "name": "sitemap.html",
+      "sourcePath": ".migration/demo-authority/source/sitemap.html",
+      "bytes": 321677,
+      "sha256": "9aaa512e71e810314fb07c9ed5af20e5e557d66a06198f7afe46aa2b2f0536c6"
+    },
+    {
+      "name": "page.html",
+      "sourcePath": ".migration/demo-authority/source/page.html",
+      "bytes": 318234,
+      "sha256": "c9fad8f370f703a0e2faae3701fda0c534b180b29db99a1d81c11373b1593b11"
+    },
+    {
+      "name": "index.html",
+      "sourcePath": ".migration/demo-authority/source/index.html",
+      "bytes": 4276692,
+      "sha256": "833f49321f6fb631125312d57f4d546a5f8e49fbd9e7bc71b0f2ccc38d4e492f"
+    }
+  ]
+}

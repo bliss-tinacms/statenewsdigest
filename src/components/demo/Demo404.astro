@@ -1,0 +1,8 @@
+---
+import raw from '../../data/demo-html/404.html?raw';
+import { render404Demo } from '../../lib/state-news-demo-render';
+import { tinaField } from '@tinacms/astro/tina-field';
+const { config = null } = Astro.props;
+const html = render404Demo(raw, { config, fields: { title: tinaField(config?.notFound, 'title'), description: tinaField(config?.notFound, 'description'), buttonText: tinaField(config?.notFound, 'buttonText') } });
+---
+<div class="state-news-authority-fragment" set:html={html} />

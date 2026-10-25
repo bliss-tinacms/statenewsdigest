@@ -1,0 +1,17 @@
+{
+  "name": "Ruth Goodwin",
+  "role": "Editor-in-Chief",
+  "avatar": "https://res.cloudinary.com/jip42unh/image/upload/v1792953816/statenewsdigest/demo-v2/6a222d53983c5671aee1f3db2bf481263984fd62349d68ecd6dcf521da6bd72f.jpg",
+  "bio": "Ruth leads the newsroom from Montgomery, Alabama. Her career spans more than fifteen years in editorial leadership at regional and national publications, with a background that includes reporting on state government, labor, and investigative work before she moved into editing. She sets the standards for what runs on the site, oversees the corrections record, and is the final authority on questions of what State News Digest will and will not publish.",
+  "email": "editorial@statenewsdigest.com",
+  "location": "Montgomery, Alabama",
+  "teamGroup": "Leadership",
+  "teamOrder": 2,
+  "showOnTeam": true,
+  "seo": {
+    "metaTitle": "Ruth Goodwin | State News Digest",
+    "metaDescription": "Ruth leads the newsroom from Montgomery, Alabama. Her career spans more than fifteen years in editorial leadership at regional and national publications, with a",
+    "noindex": false,
+    "nofollow": false
+  }
+}

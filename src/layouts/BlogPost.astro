@@ -1,0 +1,36 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	heroImage?: string | null;
+	ogTitle?: string;
+	ogDescription?: string;
+	canonicalUrl?: string;
+	noindex?: boolean;
+	nofollow?: boolean;
+	authorName?: string;
+}
+
+const { title, description, pubDate, updatedDate, heroImage, ogTitle, ogDescription, canonicalUrl, noindex, nofollow, authorName } = Astro.props;
+---
+
+<Base
+	title={title}
+	description={description}
+	image={heroImage ?? undefined}
+	ogTitle={ogTitle}
+	ogDescription={ogDescription}
+	canonicalUrl={canonicalUrl}
+	noindex={noindex}
+	nofollow={nofollow}
+	contentType="article"
+	pubDate={pubDate}
+	updatedDate={updatedDate}
+	authorName={authorName}
+>
+	<slot />
+</Base>

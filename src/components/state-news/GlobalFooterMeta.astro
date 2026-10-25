@@ -1,0 +1,6 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+const { config } = Astro.props;
+const copyright = config?.footer?.copyrightText || `© ${new Date().getFullYear()} ${config?.seo?.title || 'State News Digest'}. All rights reserved.`;
+---
+<span data-tina-field={tinaField(config?.footer, 'copyrightText')}>{copyright}</span>

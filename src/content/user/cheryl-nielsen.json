@@ -1,0 +1,17 @@
+{
+  "name": "Cheryl Nielsen",
+  "role": "Business Editor",
+  "avatar": "https://res.cloudinary.com/jip42unh/image/upload/v1792953810/statenewsdigest/demo-v2/44da00282fd292d578068d7286073aa6b80e951f1a1af805260a56b565c7d2c1.jpg",
+  "bio": "Cheryl runs the business and economy desk from Pierre, South Dakota, covering business, finance, and the household economy.",
+  "email": "editorial@statenewsdigest.com",
+  "location": "Pierre, South Dakota",
+  "teamGroup": "Senior Editors",
+  "teamOrder": 4,
+  "showOnTeam": true,
+  "seo": {
+    "metaTitle": "Cheryl Nielsen | State News Digest",
+    "metaDescription": "Cheryl runs the business and economy desk from Pierre, South Dakota, covering business, finance, and the household economy.",
+    "noindex": false,
+    "nofollow": false
+  }
+}

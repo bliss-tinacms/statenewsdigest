@@ -1,0 +1,32 @@
+name: Category and Migration Contracts
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.23.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Generate Tina SDK for route validation
+        run: pnpm exec tinacms build --local --skip-cloud-checks --skip-indexing --skip-search-index --noTelemetry
+      - name: Package-wired positive and controlled-negative gates
+        run: pnpm validate:migration
+      - name: Astro type and route checks
+        run: pnpm exec astro check

@@ -1,0 +1,51 @@
+{
+  "_template": "ASTRO-TINA-MIGRATION-COMPLETION-MANIFEST",
+  "_instructions": "Populate every field from retained evidence, preserve policy state order, and run scripts/validate-migration-completion.mjs plus its controlled-negative suite. Placeholder or UNRUN values are intentionally ineligible for completion.",
+  "policyId": "ASTRO-TINA-MIGRATION-COMPLETION-POLICY",
+  "policyVersion": "UNRUN",
+  "state": "UNRUN",
+  "transitions": [],
+  "site": {
+    "origin": "",
+    "repository": "",
+    "branch": ""
+  },
+  "run": {
+    "id": "",
+    "startedAt": "",
+    "finishedAt": ""
+  },
+  "configuredCollections": [],
+  "editableRoutes": [],
+  "incidentControls": [],
+  "gates": {},
+  "githubAuthorization": {},
+  "categoryContract": {},
+  "migrationRebrandUiContract": {},
+  "seoReflectionChain": {},
+  "assurance": {
+    "control": "ASTRO-TINA-MIGRATION-ASSURANCE-001",
+    "skillName": "astro-tina-cms",
+    "skillVersion": "",
+    "skillPath": "",
+    "coreAutomatic": true,
+    "artifacts": {},
+    "negativeSuitePassed": false
+  },
+  "collections": {},
+  "systemClasses": {},
+  "deploymentRuntime": {},
+  "cleanup": {
+    "exactRestoration": false,
+    "markerAbsence": false,
+    "temporaryMediaAbsent": false,
+    "dirtyRecords": []
+  },
+  "lineage": {},
+  "final": {
+    "readOnlyPostDeploy": false,
+    "unrun": ["populate-all-mandatory-gates"],
+    "failures": [],
+    "completionEligible": false
+  }
+}
