@@ -538,7 +538,22 @@ export async function getBlog(slug: string) {
 			pubDate
 			updatedDate
 			readTime
-			categories
+			category01 { ... on Category { _sys { filename relativePath path } } }
+			category02 { ... on Category { _sys { filename relativePath path } } }
+			category03 { ... on Category { _sys { filename relativePath path } } }
+			category04 { ... on Category { _sys { filename relativePath path } } }
+			category05 { ... on Category { _sys { filename relativePath path } } }
+			category06 { ... on Category { _sys { filename relativePath path } } }
+			category07 { ... on Category { _sys { filename relativePath path } } }
+			category08 { ... on Category { _sys { filename relativePath path } } }
+			category09 { ... on Category { _sys { filename relativePath path } } }
+			category10 { ... on Category { _sys { filename relativePath path } } }
+			category11 { ... on Category { _sys { filename relativePath path } } }
+			category12 { ... on Category { _sys { filename relativePath path } } }
+			category13 { ... on Category { _sys { filename relativePath path } } }
+			category14 { ... on Category { _sys { filename relativePath path } } }
+			category15 { ... on Category { _sys { filename relativePath path } } }
+			category16 { ... on Category { _sys { filename relativePath path } } }
 			author { ... on User { name role avatar bio email _sys { filename } } }
 			heroImage
 			authorAlt
@@ -729,7 +744,22 @@ export async function listBlogs() {
 					heroImage
 					heroImageAlt
 					seo { metaTitle metaDescription ogTitle ogDescription ogImage canonicalUrl noindex nofollow }
-					categories
+					category01 { ... on Category { _sys { filename relativePath path } } }
+			category02 { ... on Category { _sys { filename relativePath path } } }
+			category03 { ... on Category { _sys { filename relativePath path } } }
+			category04 { ... on Category { _sys { filename relativePath path } } }
+			category05 { ... on Category { _sys { filename relativePath path } } }
+			category06 { ... on Category { _sys { filename relativePath path } } }
+			category07 { ... on Category { _sys { filename relativePath path } } }
+			category08 { ... on Category { _sys { filename relativePath path } } }
+			category09 { ... on Category { _sys { filename relativePath path } } }
+			category10 { ... on Category { _sys { filename relativePath path } } }
+			category11 { ... on Category { _sys { filename relativePath path } } }
+			category12 { ... on Category { _sys { filename relativePath path } } }
+			category13 { ... on Category { _sys { filename relativePath path } } }
+			category14 { ... on Category { _sys { filename relativePath path } } }
+			category15 { ... on Category { _sys { filename relativePath path } } }
+			category16 { ... on Category { _sys { filename relativePath path } } }
 					author { ... on User { name role avatar bio email _sys { filename } } }
 					_sys { filename }
 				}
